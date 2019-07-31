@@ -8,7 +8,7 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
+
 #import <UIKit/UIKit.h>
 
 @class SETextView, SESelectionGrabber, SETextLayout;
@@ -35,4 +35,4 @@
 - (void)hideControls;
 
 @end
-#endif
+

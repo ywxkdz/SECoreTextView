@@ -7,8 +7,6 @@
 //
 
 #import <TargetConditionals.h>
-
-#if TARGET_OS_IPHONE
 #import "SETextEditingCaret.h"
 #import "SEConstants.h"
 
@@ -65,4 +63,4 @@ static const NSTimeInterval SETextEditingCaretBlinkAnimationDuration = 0.1;
 }
 
 @end
-#endif
+

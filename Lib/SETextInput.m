@@ -8,7 +8,6 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
 #import "SETextInput.h"
 
 @implementation SETextRange
@@ -61,4 +60,4 @@
 }
 
 @end
-#endif
+

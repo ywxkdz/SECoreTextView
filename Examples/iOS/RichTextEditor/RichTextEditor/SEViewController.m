@@ -65,6 +65,8 @@ static const CGFloat defaultFontSize = 18.0f;
     self.textView.inputAccessoryView = self.inputAccessoryView;
     self.textView.editable = YES;
     self.textView.lineSpacing = 8.0f;
+    self.textView.lineHeight  = 40;
+    
     NSString *initialText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"InitialText" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:initialText];
     

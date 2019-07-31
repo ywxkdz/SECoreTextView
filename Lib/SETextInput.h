@@ -7,8 +7,6 @@
 //
 
 #import <TargetConditionals.h>
-
-#if TARGET_OS_IPHONE
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -28,4 +26,4 @@
 + (SETextPosition *)positionWithIndex:(NSUInteger)index;
 
 @end
-#endif
+

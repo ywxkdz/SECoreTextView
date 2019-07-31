@@ -8,7 +8,7 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
+
 #import "SETextMagnifierRanged.h"
 #import "SEViewCaptureHelper.h"
 
@@ -158,4 +158,4 @@
 }
 
 @end
-#endif
+

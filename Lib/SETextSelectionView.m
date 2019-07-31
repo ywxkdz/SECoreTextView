@@ -8,7 +8,7 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
+
 #import "SETextSelectionView.h"
 #import "SETextView.h"
 #import "SESelectionGrabber.h"
@@ -118,4 +118,4 @@ static const CGFloat SESelectionGrabberWidth = 32.0f;
 }
 
 @end
-#endif
+

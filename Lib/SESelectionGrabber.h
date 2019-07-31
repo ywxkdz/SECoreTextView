@@ -8,7 +8,7 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
+
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, SESelectionGrabberDotMetric) {
@@ -22,4 +22,4 @@ typedef NS_ENUM(NSUInteger, SESelectionGrabberDotMetric) {
 @property (nonatomic) SESelectionGrabberDotMetric dotMetric;
 
 @end
-#endif
+

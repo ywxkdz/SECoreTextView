@@ -54,27 +54,21 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 @property (nonatomic, getter = isLongPressing) BOOL longPressing;
 
 @property (nonatomic, readwrite) BOOL editing;
-
-#if TARGET_OS_IPHONE
 @property (nonatomic) UITextInputStringTokenizer *tokenizer;
-
 @property (nonatomic) SETextMagnifierCaret *magnifierCaret;
 @property (nonatomic) SETextMagnifierRanged *magnifierRanged;
-
 @property (nonatomic) SETextSelectionView *textSelectionView;
 @property (nonatomic) SETextEditingCaret *caretView;
-
 @property (nonatomic, copy) NSAttributedString *storedAttributedText;
-#endif
+
 
 @end
 
 @implementation SETextView
 
-#if TARGET_OS_IPHONE
 @synthesize inputDelegate;
 @synthesize markedTextStyle;
-#endif
+
 
 - (void)commonInit
 {
@@ -90,7 +84,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     
     self.minimumLongPressDuration = 0.5;
     
-#if TARGET_OS_IPHONE
+
     self.showsEditingMenuAutomatically = YES;
     
     self.magnifierCaret = [[SETextMagnifierCaret alloc] init];
@@ -107,10 +101,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     self.returnKeyType = UIReturnKeyDefault;
     self.enablesReturnKeyAutomatically = NO;
     self.secureTextEntry = NO;
-#endif
+
 }
 
-#if TARGET_OS_IPHONE
 - (void)setupTextSelectionControls
 {
     CGRect frame = self.bounds;
@@ -125,11 +118,13 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     self.caretView = [[SETextEditingCaret alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 2.0f, 0.0f)];
     [self addSubview:self.caretView];
 }
-#endif
+
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self commonInit];
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -144,9 +139,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (void)dealloc
 {
-#if TARGET_OS_IPHONE
+
     [self.caretView stopBlink];
-#endif
+
 }
 
 #pragma mark -
@@ -169,17 +164,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
                                            font:nil];
 }
 
-#if TARGET_OS_IPHONE
 + (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
                           constraintSize:(CGSize)constraintSize
                              lineSpacing:(CGFloat)lineSpacing
                                     font:(UIFont *)font
-#else
-+ (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
-                          constraintSize:(CGSize)constraintSize
-                             lineSpacing:(CGFloat)lineSpacing
-                                    font:(NSFont *)font
-#endif
 {
     return [self frameRectWithAttributtedString:attributedString
                                  constraintSize:constraintSize
@@ -188,35 +176,29 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
                                            font:(id)font];
 }
 
-#if TARGET_OS_IPHONE
 + (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
                           constraintSize:(CGSize)constraintSize
                              lineSpacing:(CGFloat)lineSpacing
                         paragraphSpacing:(CGFloat)paragraphSpacing
                                     font:(UIFont *)font
-#else
-+ (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
-                          constraintSize:(CGSize)constraintSize
-                             lineSpacing:(CGFloat)lineSpacing
-                        paragraphSpacing:(CGFloat)paragraphSpacing
-                                    font:(NSFont *)font
-#endif
+
 {
     NSInteger length = attributedString.length;
     NSMutableAttributedString *mutableAttributedString = attributedString.mutableCopy;
     
     CTTextAlignment textAlignment = kCTTextAlignmentNatural;
     lineSpacing = roundf(lineSpacing);
-    CGFloat lineHeight = 0.0f;
+    
+    CGFloat lineHeight =  40;
     paragraphSpacing = roundf(paragraphSpacing);
     
     CTParagraphStyleSetting setting[] = {
         { kCTParagraphStyleSpecifierAlignment, sizeof(textAlignment), &textAlignment},
         { kCTParagraphStyleSpecifierMinimumLineHeight, sizeof(lineHeight), &lineHeight },
         { kCTParagraphStyleSpecifierMaximumLineHeight, sizeof(lineHeight), &lineHeight },
-        { kCTParagraphStyleSpecifierLineSpacing, sizeof(lineSpacing), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(lineSpacing), &lineSpacing },
-        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(lineSpacing), &lineSpacing },
         { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(paragraphSpacing), &paragraphSpacing }
     };
     
@@ -278,9 +260,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 - (void)setSelectable:(BOOL)selectable
 {
     _selectable = selectable;
-#if TARGET_OS_IPHONE
+
     self.textSelectionView.userInteractionEnabled = self.isSelectable;
-#endif
+
 }
 
 - (void)setEditable:(BOOL)editable
@@ -296,11 +278,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     _editing = editing;
     self.textLayout.editing = editing;
     
-#if TARGET_OS_IPHONE
     if (!editing) {
         self.caretView.hidden = YES;
     }
-#endif
+
 }
 
 - (void)setText:(NSString *)text
@@ -331,12 +312,11 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     return self.textLayout.textSelection.selectedRange;
 }
 
-#if TARGET_OS_IPHONE
 - (void)setSelectedRange:(NSRange)selectedRange
 {
     self.selectedTextRange = [SETextRange rangeWithNSRange:selectedRange];
 }
-#endif
+
 
 - (NSString *)selectedText
 {
@@ -360,11 +340,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (CGRect)caretRect
 {
-#if TARGET_OS_IPHONE
+
     return self.caretView.frame;
-#else
-    return CGRectNull;
-#endif
+
 }
 
 #pragma mark -
@@ -407,23 +385,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         return;
     }
     
-#if TARGET_OS_IPHONE
     CGColorRef color = self.textColor.CGColor;
     [self setAttributes:@{(id)kCTForegroundColorAttributeName: (__bridge id)color}];
-#else
-    NSDictionary *attributes = nil;
-    
-    CGColorRef color = NULL;
-    if ([self.textColor respondsToSelector:@selector(CGColor)]) {
-        color = self.textColor.CGColor;
-        attributes = @{(id)kCTForegroundColorAttributeName: (__bridge id)color};
-    } else {
-        color = [self.textColor createCGColor];
-        attributes = @{(id)kCTForegroundColorAttributeName: (__bridge id)color};
-        CGColorRelease(color);
-    }
-    [self setAttributes:attributes];
-#endif
+
 }
 
 - (void)setTextAttachmentAttributes
@@ -472,7 +436,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (void)setParagraphStyle
 {
-#if TARGET_OS_IPHONE
+
     CTTextAlignment textAlignment;
     if (self.textAlignment == NSTextAlignmentRight) {
         textAlignment = kCTTextAlignmentRight;
@@ -481,9 +445,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     } else {
         textAlignment = (CTTextAlignment)self.textAlignment;
     }
-#else
-    CTTextAlignment textAlignment = (CTTextAlignment)self.textAlignment;
-#endif
+
     CTLineBreakMode lineBreakMode = (CTLineBreakMode)self.lineBreakMode;
     if (lineBreakMode == kCTLineBreakByTruncatingTail) {
         lineBreakMode = kCTLineBreakByWordWrapping;
@@ -498,9 +460,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         { kCTParagraphStyleSpecifierLineBreakMode, sizeof(lineBreakMode), &lineBreakMode},
         { kCTParagraphStyleSpecifierMinimumLineHeight, sizeof(lineHeight), &lineHeight },
         { kCTParagraphStyleSpecifierMaximumLineHeight, sizeof(lineHeight), &lineHeight },
-        { kCTParagraphStyleSpecifierLineSpacing, sizeof(lineSpacing), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(lineSpacing), &lineSpacing },
-        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(lineSpacing), &lineSpacing },
+//        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(lineSpacing), &lineSpacing },
         { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(paragraphSpacing), &paragraphSpacing }
     };
     
@@ -543,14 +505,14 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (void)finishSelecting
 {
-#if TARGET_OS_IPHONE
+
     if (!self.editing) {
         if (self.showsEditingMenuAutomatically) {
             [self hideEditingMenu];
             [self showEditingMenu];
         }
     }
-#endif
+
     
     if ([self respondsToSelector:@selector(textViewDidEndSelecting:)]) {
         [self.delegate textViewDidEndSelecting:self];
@@ -559,9 +521,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (void)selectionChanged
 {
-#if TARGET_OS_IPHONE
+
     [self updateCaretPosition];
-#endif
+
     [self notifySelectionChanged];
     [self setNeedsDisplayInRect:self.bounds];
 }
@@ -643,7 +605,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     }
 }
 
-#if TARGET_OS_IPHONE
+
 - (void)drawTextDecorations
 {
     [self.attributedText enumerateAttribute:NSStrikethroughStyleAttributeName inRange:NSMakeRange(0, self.attributedText.length) options:kNilOptions usingBlock:^(id value, NSRange range, BOOL *stop) {
@@ -669,7 +631,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         }
     }];
 }
-#endif
+
 
 - (void)drawTextAttachmentsInContext:(CGContextRef)context
 {
@@ -706,11 +668,8 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
                     }
                 } else if ([object isKindOfClass:[NSImage class]]) {
                     NSImage *image = object;
-#if TARGET_OS_IPHONE
                     [image drawInRect:rect];
-#else
-                    [image drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0f];
-#endif
+
                 } else if ([object isKindOfClass:NSClassFromString(@"NSBlock")]) {
                     SETextAttachmentDrawingBlock draw = attachment.object;
                     CGContextSaveGState(context);
@@ -733,10 +692,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     }
     
     NSInteger lineNumber = 0;
-#if TARGET_OS_IPHONE
+
     CGRect startRect = CGRectZero;
     CGRect endRect = CGRectZero;
-#endif
+
     
     CGFloat lineSpacing = self.lineSpacing;
     CGFloat previousLineOffset = 0.0f;
@@ -768,43 +727,37 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         }
         
         if (previousLineOffset > 0.0f) {
-#if TARGET_OS_IPHONE
+
             CGFloat delta = CGRectGetMinY(selectionRect) - previousLineOffset;
             selectionRect.origin.y -= delta;
             selectionRect.size.height += delta;
-#else
-            CGFloat delta = CGRectGetMaxY(selectionRect) - previousLineOffset;
-            selectionRect.origin.y -= delta;
-            selectionRect.size.height += delta;
-#endif
+
         }
         
         selectionRect = CGRectIntegral(selectionRect);
         
         UIRectFill(selectionRect);
         
-#if TARGET_OS_IPHONE
+
         if (lineNumber == 0) {
             startRect = selectionRect;
             endRect = selectionRect;
         } else {
             endRect = selectionRect;
         }
-#endif
+
         
-#if TARGET_OS_IPHONE
+
         previousLineOffset = CGRectGetMaxY(selectionRect);
-#else
-        previousLineOffset = CGRectGetMinY(selectionRect);
-#endif
+
         
         lineNumber++;
     }
     
-#if TARGET_OS_IPHONE
+
     self.textSelectionView.startFrame = startRect;
     self.textSelectionView.endFrame = endRect;
-#endif
+
 }
 
 - (void)highlightMarkedText
@@ -853,60 +806,11 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     }
 }
 
-#if !TARGET_OS_IPHONE
-- (void)highlightRolloveredLink
-{
-    if (self.touchPhase == SETouchPhaseNone) {
-        SELinkText *link = [self linkAtPoint:self.mouseLocation];
-        for (SETextGeometry *geometry in link.geometries) {
-            [self.linkRolloverEffectColor set];
-            CGRect linkRect = geometry.rect;
-            linkRect.size.height = 1.0f;
-            
-            NSRectFill(linkRect);
-        }
-    }
-}
-
-- (void)updateCursorRectsInLinks
-{
-    [self discardCursorRects];
-    
-    [self addCursorRect:self.textLayout.frameRect cursor:[NSCursor IBeamCursor]];
-    
-    [self enumerateLinksUsingBlock:^(SELinkText *link, BOOL *stop) {
-        for (SETextGeometry *geometry in link.geometries) {
-            [self addCursorRect:geometry.rect cursor:[NSCursor pointingHandCursor]];
-        }
-    }];
-}
-
-- (void)updateTrackingAreasInLinks
-{
-    NSArray *trackingAreas = self.trackingAreas;
-    for (NSTrackingArea *trackingArea in trackingAreas) {
-        [self removeTrackingArea:trackingArea];
-    }
-    
-    [self enumerateLinksUsingBlock:^(SELinkText *link, BOOL *stop) {
-        for (SETextGeometry *geometry in link.geometries) {
-            NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:geometry.rect
-                                                                        options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow
-                                                                          owner:self
-                                                                       userInfo:nil];
-            [self addTrackingArea:trackingArea];
-        }
-    }];
-}
-#endif
-
 - (NSBezierPath *)bezierPathWithRoundedRect:(CGRect)rect cornerRadius:(CGFloat)radius
 {
-#if TARGET_OS_IPHONE
+
     return [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius];
-#else
-    return [NSBezierPath bezierPathWithRoundedRect:rect xRadius:radius yRadius:radius];
-#endif
+
 }
 
 #pragma mark -
@@ -915,11 +819,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 {
     [super drawRect:dirtyRect];
     
-#if TARGET_OS_IPHONE
+
     CGContextRef context = UIGraphicsGetCurrentContext();
-#else
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-#endif
+
     [self updateLayout];
     
     [self highlightSelection];
@@ -930,20 +832,15 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     
     [self highlightClickedLink];
     
-#if TARGET_OS_IPHONE
+
     [self drawTextDecorations];
-#endif
+
     
     [self drawTextAttachmentsInContext:context];
     
-#if TARGET_OS_IPHONE
+
     [self resetSelectionGrabber];
-#else
-    [self highlightRolloveredLink];
-    
-    [self updateCursorRectsInLinks];
-    [self updateTrackingAreasInLinks];
-#endif
+
     
     [self.textLayout drawInContext:context];
 }
@@ -980,10 +877,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         if (link) {
             [self longPressedOnLink:link];
             
-#if TARGET_OS_IPHONE
+
             [self clearSelection];
             [self hideEditingMenu];
-#endif
+
             
             self.longPressing = YES;
         }
@@ -991,8 +888,6 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 }
 
 #pragma mark - iOS touch events
-#if TARGET_OS_IPHONE
-
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     if (self.isHidden || self.userInteractionEnabled == NO || self.alpha < 0.01f) {
@@ -1415,163 +1310,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     
     return [super becomeFirstResponder];
 }
+#pragma mark - iOS touch events End
 
-#else
-#pragma mark - OS X mouse events
 
-- (CGPoint)mouseLocationOnEvent:(NSEvent *)theEvent
-{
-    CGPoint locationInWindow = [theEvent locationInWindow];
-    CGPoint location = [self convertPoint:locationInWindow fromView:nil];
-    
-    return location;
-}
 
-- (void)mouseDown:(NSEvent *)theEvent
-{
-    [self startLongPressTimer];
-    
-    self.mouseLocation = [self mouseLocationOnEvent:theEvent];
-    
-    if (theEvent.clickCount == 2) {
-        self.touchPhase = SETouchPhaseMoved;
-        [self.textLayout setSelectionWithPoint:self.mouseLocation];
-    } else if ([self containsPointInTextFrame:self.mouseLocation]) {
-        self.touchPhase = SETouchPhaseBegan;
-        [self.textLayout setSelectionStartWithPoint:self.mouseLocation];
-    }
-    
-    [self selectionChanged];
-}
-
-- (void)mouseDragged:(NSEvent *)theEvent
-{
-    self.mouseLocation = [self mouseLocationOnEvent:theEvent];
-    
-    self.touchPhase = SETouchPhaseMoved;
-    
-    [self.textLayout setSelectionEndWithClosestPoint:self.mouseLocation];
-    
-    [self selectionChanged];
-}
-
-- (void)mouseUp:(NSEvent *)theEvent
-{
-    [self stopLongPressTimer];
-    
-    self.mouseLocation = [self mouseLocationOnEvent:theEvent];
-    self.clickPoint = CGPointZero;
-    
-    self.touchPhase = SETouchPhaseEnded;
-    
-    if (self.longPressing) {
-        self.longPressing = NO;
-    } else {
-        if ([self containsPointInTextFrame:self.mouseLocation]) {
-            SELinkText *link = [self linkAtPoint:self.mouseLocation];
-            if (link) {
-                [self clickedOnLink:link];
-            }
-        }
-    }
-    
-    [self setNeedsDisplay:YES];
-}
-
-- (void)mouseEntered:(NSEvent *)theEvent
-{
-    self.mouseLocation = [self mouseLocationOnEvent:theEvent];
-    [self setNeedsDisplay:YES];
-}
-
-- (void)mouseExited:(NSEvent *)theEvent
-{
-    self.mouseLocation = [self mouseLocationOnEvent:theEvent];
-    [self setNeedsDisplay:YES];
-}
-
-- (NSMenu *)menuForEvent:(NSEvent *)event
-{
-    if (self.textLayout.textSelection) {
-        NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
-        [menu addItemWithTitle:NSLocalizedString(@"Cut", nil) action:@selector(cut:) keyEquivalent:@""];
-        [menu addItemWithTitle:NSLocalizedString(@"Copy", nil) action:@selector(copy:) keyEquivalent:@""];
-        [menu addItemWithTitle:NSLocalizedString(@"Paste", nil) action:@selector(paste:) keyEquivalent:@""];
-        [menu addItem:[NSMenuItem separatorItem]];
-        [menu addItemWithTitle:NSLocalizedString(@"Select All", nil) action:@selector(selectAll:) keyEquivalent:@""];
-        
-        return [[[NSTextView alloc] init] menuForEvent:event];
-    }
-    
-    return nil;
-}
-
-- (void)quickLookWithEvent:(NSEvent *)event
-{
-    if (!self.textLayout.textSelection) {
-        self.mouseLocation = [self mouseLocationOnEvent:event];
-        [self.textLayout setSelectionWithPoint:self.mouseLocation];
-    }
-    
-    CGRect rect = [self rectOfFirstLineInSelectionRect];
-    [self showDefinitionForAttributedString:self.selectedAttributedText atPoint:rect.origin];
-}
-
-- (CGRect)rectOfFirstLineInSelectionRect
-{
-    SETextSelection *textSelection = self.textLayout.textSelection;
-    if (!textSelection) {
-        return CGRectZero;
-    }
-    
-    for (SELineLayout *lineLayout in self.textLayout.lineLayouts) {
-        CGRect selectionRect = [lineLayout rectOfStringWithRange:textSelection.selectedRange];
-        if (!CGRectIsEmpty(selectionRect)) {
-            return selectionRect;
-        }
-    }
-    
-    return CGRectZero;
-}
-
-- (BOOL)acceptsFirstResponder
-{
-    return YES;
-}
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    if (menuItem.action == @selector(copy:)) {
-        return self.selectedRange.length > 0;
-    }
-    if (menuItem.action == @selector(cut:) ||
-        menuItem.action == @selector(paste:) ||
-        menuItem.action == @selector(delete:)) {
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (BOOL)performKeyEquivalent:(NSEvent *)theEvent
-{
-    if (self.textLayout.textSelection) {
-        if ((theEvent.modifierFlags & NSDeviceIndependentModifierFlagsMask) == NSCommandKeyMask) {
-            if ([theEvent.characters isEqualToString:@"c"]) {
-                [self copy:nil];
-                return YES;
-            }
-            if ([theEvent.characters isEqualToString:@"a"]) {
-                [self selectAll:nil];
-                return YES;
-            }
-        }
-    }
-    
-    return [super performKeyEquivalent:theEvent];
-}
-
-#endif
 #pragma mark - Common
 
 - (void)setHighlighted:(BOOL)highlighted
@@ -1592,38 +1334,29 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
 - (void)cut:(id)sender
 {
-#if TARGET_OS_IPHONE
+
     if (self.selectedText.length > 0) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = self.selectedText;
         self.storedAttributedText = self.selectedAttributedText;
         [self insertText:@""];
     }
-#else
-    [self copy:nil];
-#endif
+
 }
 
 - (void)copy:(id)sender
 {
-#if TARGET_OS_IPHONE
+
     if (self.selectedText.length > 0) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = self.selectedText;
         self.storedAttributedText = self.selectedAttributedText;
     }
-#else
-    if (self.selectedAttributedText.length > 0) {
-        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-        [pasteboard clearContents];
-        [pasteboard writeObjects:@[self.selectedText]];
-    }
-#endif
 }
 
 - (void)paste:(id)sender
 {
-#if TARGET_OS_IPHONE
+
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     NSAttributedString *storedAttributedText = self.storedAttributedText;
     if (storedAttributedText && [pasteboard.string isEqualToString:[storedAttributedText string]]) {
@@ -1632,7 +1365,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     else {
         [self insertText:pasteboard.string];
     }
-#endif
+
 }
 
 - (void)select:(id)sender
@@ -1642,11 +1375,11 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     [self selectionChanged];
     [self finishSelecting];
     
-#if TARGET_OS_IPHONE
+
     if (self.isEditing) {
         [self showEditingMenu];
     }
-#endif
+
     
     [self setNeedsDisplayInRect:self.bounds];
 }
@@ -1658,11 +1391,10 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     [self selectionChanged];
     [self finishSelecting];
     
-#if TARGET_OS_IPHONE
     if (self.isEditing) {
         [self showEditingMenu];
     }
-#endif
+
     
     [self setNeedsDisplayInRect:self.bounds];
 }
@@ -1690,11 +1422,9 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
             [self.delegate textViewDidEndEditing:self];
         }
     } else {
-#if TARGET_OS_IPHONE
+
         if (self.isFirstResponder) {
-#else
-        if (self == self.window.firstResponder) {
-#endif
+
             [self clearSelection];
         }
     }
@@ -1703,8 +1433,6 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     
     return [super resignFirstResponder];
 }
-
-#if TARGET_OS_IPHONE
 #pragma mark UITextInput methods
 
 - (NSString *)textInRange:(UITextRange *)range
@@ -2398,6 +2126,6 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
         [attributedString replaceCharactersInRange:range withString:aString];
     }
 }
-#endif
+
 
 @end

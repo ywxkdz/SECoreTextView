@@ -8,7 +8,6 @@
 
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
 #import "SESelectionGrabber.h"
 #import "SEConstants.h"
 
@@ -83,4 +82,4 @@
 }
 
 @end
-#endif
+

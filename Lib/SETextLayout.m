@@ -78,6 +78,8 @@
     [textLayout createFramesetter];
     [textLayout createFrame];
     
+    NSLog(@"\nFrame -  %@ \n",NSStringFromCGRect(textLayout.frameRect));
+    
     return textLayout.frameRect;
 }
 
@@ -124,9 +126,8 @@
     CGPathRelease(path);
     
     _frameRect = frameRect;
-#if TARGET_OS_IPHONE
     _frameRect.origin.y = 0.0f;
-#endif
+
 }
 
 - (void)createTypesetter
@@ -224,26 +225,18 @@
                                      ascent + descent);
         lineRect.origin.x += _frameRect.origin.x;
         
-#if TARGET_OS_IPHONE
+
         lineRect.origin.y = CGRectGetHeight(_frameRect) - CGRectGetMaxY(lineRect);
-#else
-        lineRect.origin.y += _frameRect.origin.y;
-#endif
+
         
         CGRect drawingRect = lineRect;
         if (index > 0) {
-#if TARGET_OS_IPHONE
+
         drawingRect.origin.y = CGRectGetHeight(_bounds) - CGRectGetMaxY(lineRect);
         if (self.lineBreakMode == kCTLineBreakByTruncatingTail && drawingRect.origin.y < 0.0f) {
             isTruncated = YES;
             break;
         }
-#else
-        if (self.lineBreakMode == kCTLineBreakByTruncatingTail && lineRect.origin.y < 0.0f) {
-            isTruncated = YES;
-            break;
-        }
-#endif
         }
         
         SELineLayout *lineLayout = [[SELineLayout alloc] initWithLine:line index:index rect:lineRect metrics:metrics];
@@ -318,10 +311,10 @@
 
 - (void)drawFrameInContext:(CGContextRef)context
 {
-#if TARGET_OS_IPHONE
+
     CGContextTranslateCTM(context, 0, CGRectGetHeight(self.bounds));
     CGContextScaleCTM(context, 1.0, -1.0);
-#endif
+
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     
@@ -384,8 +377,7 @@
                 return index;
             }
         }
-        
-#if TARGET_OS_IPHONE
+    
         if (lineNumber == 0 && point.y < CGRectGetMinY(lineLayout.rect)) {
             return 0;
         }
@@ -397,19 +389,7 @@
         if (point.y > CGRectGetMinY(lineLayout.rect) && point.y < CGRectGetMaxY(lineLayout.rect) - lineLayout.metrics.leading) {
             return [lineLayout stringIndexForPosition:CGPointMake(CGRectGetMaxX(lineLayout.rect), CGRectGetMinY(lineLayout.rect))];
         }
-#else
-        if (lineNumber == 0 && point.y > CGRectGetMaxY(lineLayout.rect)) {
-            return 0;
-        }
-        
-        if (lineNumber == self.lineLayouts.count - 1 && point.y < CGRectGetMinY(lineLayout.rect) - lineLayout.metrics.leading) {
-            return [lineLayout stringIndexForPosition:CGPointMake(CGRectGetMaxX(lineLayout.rect), CGRectGetMaxY(lineLayout.rect))];
-        }
-        
-        if (point.y < CGRectGetMaxY(lineLayout.rect) && point.y > CGRectGetMinY(lineLayout.rect) - lineLayout.metrics.leading) {
-            return [lineLayout stringIndexForPosition:CGPointMake(CGRectGetMaxX(lineLayout.rect), CGRectGetMaxY(lineLayout.rect))];
-        }
-#endif
+
         
         lineNumber++;
     }

@@ -7,8 +7,6 @@
 //
 
 #import <TargetConditionals.h>
-
-#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -19,4 +17,4 @@
 - (void)hide;
 
 @end
-#endif
+

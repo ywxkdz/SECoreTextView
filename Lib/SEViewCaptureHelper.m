@@ -8,7 +8,7 @@
 
 #import "SEViewCaptureHelper.h"
 
-#if TARGET_OS_IPHONE
+
 
 @implementation SEViewCaptureHelper
 
@@ -33,4 +33,4 @@
 }
 
 @end
-#endif
+

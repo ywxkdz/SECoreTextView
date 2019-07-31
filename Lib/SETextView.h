@@ -23,22 +23,15 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
 
 @class SELinkText;
 
-#if TARGET_OS_IPHONE
+
 @interface SETextView : UIView <UITextInput, UITextInputTraits>
-#else
-@interface SETextView : NSView
-#endif
+
 
 @property (nonatomic, weak) IBOutlet id<SETextViewDelegate> delegate;
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSAttributedString *attributedText;
-
-#if TARGET_OS_IPHONE
 @property (nonatomic) UIFont *font;
-#else
-@property (nonatomic) NSFont *font;
-#endif
 @property (nonatomic) NSColor *textColor;
 @property (nonatomic) NSColor *highlightedTextColor;
 @property (nonatomic) NSTextAlignment textAlignment;
@@ -55,15 +48,9 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
 
 @property (nonatomic, getter = isHighlighted) BOOL highlighted;
 @property (nonatomic, getter = isSelectable) BOOL selectable;
-#if TARGET_OS_IPHONE
 @property (nonatomic) BOOL showsEditingMenuAutomatically;
-#endif
-
-#if TARGET_OS_IPHONE
 @property (nonatomic) NSRange selectedRange;
-#else
-@property (nonatomic, readonly) NSRange selectedRange;
-#endif
+
 @property (nonatomic, readonly) NSString *selectedText;
 @property (nonatomic, readonly) NSAttributedString *selectedAttributedText;
 
@@ -76,7 +63,7 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
 @property (readwrite) UIView *inputView;
 @property (readwrite) UIView *inputAccessoryView;
 
-#if TARGET_OS_IPHONE
+
 @property (nonatomic) UITextAutocapitalizationType autocapitalizationType;
 @property (nonatomic) UITextAutocorrectionType autocorrectionType;
 @property (nonatomic) UITextSpellCheckingType spellCheckingType;
@@ -85,7 +72,7 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
 @property (nonatomic) UIReturnKeyType returnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic, getter = isSecureTextEntry) BOOL secureTextEntry;
-#endif
+
 
 - (id)initWithFrame:(CGRect)frame;
 
@@ -94,7 +81,7 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
 + (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
                           constraintSize:(CGSize)constraintSize
                              lineSpacing:(CGFloat)lineSpacing;
-#if TARGET_OS_IPHONE
+
 + (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
                           constraintSize:(CGSize)constraintSize
                              lineSpacing:(CGFloat)lineSpacing
@@ -104,24 +91,14 @@ typedef NS_ENUM(NSUInteger, SETextAttachmentDrawingOptions) {
                              lineSpacing:(CGFloat)lineSpacing
                         paragraphSpacing:(CGFloat)paragraphSpacing
                                     font:(UIFont *)font;
-#else
-+ (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
-                          constraintSize:(CGSize)constraintSize
-                             lineSpacing:(CGFloat)lineSpacing
-                                    font:(NSFont *)font;
-+ (CGRect)frameRectWithAttributtedString:(NSAttributedString *)attributedString
-                          constraintSize:(CGSize)constraintSize
-                             lineSpacing:(CGFloat)lineSpacing
-                        paragraphSpacing:(CGFloat)paragraphSpacing
-                                    font:(NSFont *)font;
-#endif
+
 
 - (void)addObject:(id)object size:(CGSize)size atIndex:(NSInteger)index;
 - (void)addObject:(id)object size:(CGSize)size replaceRange:(NSRange)range;
-#if TARGET_OS_IPHONE
+
 - (void)insertAttributedText:(NSAttributedString *)attributedText;
 - (void)insertObject:(id)object size:(CGSize)size;
-#endif
+
 
 - (void)clearSelection;
 
