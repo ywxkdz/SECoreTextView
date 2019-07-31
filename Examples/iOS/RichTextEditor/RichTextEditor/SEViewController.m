@@ -62,10 +62,12 @@ static const CGFloat defaultFontSize = 18.0f;
     self.inputAccessoryView.boldButton.target = self;
     self.inputAccessoryView.boldButton.action = @selector(bold:);
     
+    
+    self.textView.backgroundColor = [UIColor lightGrayColor];
+    
     self.textView.inputAccessoryView = self.inputAccessoryView;
     self.textView.editable = YES;
-    self.textView.lineSpacing = 8.0f;
-    self.textView.lineHeight  = 40;
+    
     
     NSString *initialText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"InitialText" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:initialText];
@@ -138,6 +140,15 @@ static const CGFloat defaultFontSize = 18.0f;
 {
     [self updateLayout];
 }
+
+
+-(BOOL)textView:(SETextView *)textView clickedOnLink:(SELinkText *)link atIndex:(NSUInteger)charIndex{
+    
+    
+    return YES;
+}
+
+
 
 #pragma mark -
 

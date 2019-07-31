@@ -37,6 +37,8 @@ static NSString * const ZERO_WIDTH_SPACE = @"\u200B";
 static NSString * const LINE_SEPARATOR = @"\u2028";
 static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
 
+static CGFloat  heightForLine = 38;  //默认行高
+
 @interface SETextView ()
 
 @property (nonatomic) SETextLayout *textLayout;
@@ -103,6 +105,7 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     self.secureTextEntry = NO;
 
 }
+//默认行高 固定
 
 - (void)setupTextSelectionControls
 {
@@ -188,8 +191,8 @@ static NSString * const PARAGRAPH_SEPARATOR = @"\u2029";
     
     CTTextAlignment textAlignment = kCTTextAlignmentNatural;
     lineSpacing = roundf(lineSpacing);
+    CGFloat lineHeight =  heightForLine;
     
-    CGFloat lineHeight =  40;
     paragraphSpacing = roundf(paragraphSpacing);
     
     CTParagraphStyleSetting setting[] = {
