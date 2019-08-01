@@ -82,6 +82,10 @@
 		14EDE30217F55A7C00ABF2C6 /* SETextSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDE2F117F55A7C00ABF2C6 /* SETextSelectionView.m */; };
 		14EDE30317F55A7C00ABF2C6 /* SETextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDE2F317F55A7C00ABF2C6 /* SETextView.m */; };
 		14EDE30517F55A8F00ABF2C6 /* SECoreTextView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14EDE30417F55A8F00ABF2C6 /* SECoreTextView.bundle */; };
+		4A68754222F1A785003B5528 /* SEBaseTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754122F1A785003B5528 /* SEBaseTextViewController.m */; };
+		4A68754522F1AA92003B5528 /* SENormalTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754422F1AA92003B5528 /* SENormalTextCell.m */; };
+		4A68754822F1ADA9003B5528 /* SEBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754722F1ADA9003B5528 /* SEBaseModel.m */; };
+		4A68754E22F1AEEC003B5528 /* SEBoldRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754D22F1AEEC003B5528 /* SEBoldRange.m */; };
 		D94F7A671AB685D200D96592 /* SEViewCaptureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +188,14 @@
 		14EDE2F317F55A7C00ABF2C6 /* SETextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETextView.m; path = ../../../../Lib/SETextView.m; sourceTree = "<group>"; };
 		14EDE30417F55A8F00ABF2C6 /* SECoreTextView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SECoreTextView.bundle; path = ../../../../Resources/SECoreTextView.bundle; sourceTree = "<group>"; };
 		4A68753F22F187F2003B5528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4A68754022F1A785003B5528 /* SEBaseTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBaseTextViewController.h; sourceTree = "<group>"; };
+		4A68754122F1A785003B5528 /* SEBaseTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseTextViewController.m; sourceTree = "<group>"; };
+		4A68754322F1AA92003B5528 /* SENormalTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SENormalTextCell.h; sourceTree = "<group>"; };
+		4A68754422F1AA92003B5528 /* SENormalTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SENormalTextCell.m; sourceTree = "<group>"; };
+		4A68754622F1ADA9003B5528 /* SEBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBaseModel.h; sourceTree = "<group>"; };
+		4A68754722F1ADA9003B5528 /* SEBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseModel.m; sourceTree = "<group>"; };
+		4A68754C22F1AEEC003B5528 /* SEBoldRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBoldRange.h; sourceTree = "<group>"; };
+		4A68754D22F1AEEC003B5528 /* SEBoldRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBoldRange.m; sourceTree = "<group>"; };
 		D94F7A651AB685D200D96592 /* SEViewCaptureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEViewCaptureHelper.h; path = ../../../../Lib/SEViewCaptureHelper.h; sourceTree = "<group>"; };
 		D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEViewCaptureHelper.m; path = ../../../../Lib/SEViewCaptureHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -340,6 +352,14 @@
 				1423745F17F37E13006D35BC /* Lib */,
 				1423742E17F37DC9006D35BC /* Images */,
 				1469DB6D17F358A700ADDA7E /* Supporting Files */,
+				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
+				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
+				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
+				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
+				4A68754622F1ADA9003B5528 /* SEBaseModel.h */,
+				4A68754722F1ADA9003B5528 /* SEBaseModel.m */,
+				4A68754C22F1AEEC003B5528 /* SEBoldRange.h */,
+				4A68754D22F1AEEC003B5528 /* SEBoldRange.m */,
 			);
 			path = RichTextEditor;
 			sourceTree = "<group>";
@@ -473,6 +493,7 @@
 			files = (
 				14EDE2FC17F55A7C00ABF2C6 /* SETextGeometry.m in Sources */,
 				1469DB7317F358A700ADDA7E /* main.m in Sources */,
+				4A68754E22F1AEEC003B5528 /* SEBoldRange.m in Sources */,
 				14EDE2F617F55A7C00ABF2C6 /* SEConstants.m in Sources */,
 				14EDE2FF17F55A7C00ABF2C6 /* SETextMagnifierCaret.m in Sources */,
 				14EDE2F917F55A7C00ABF2C6 /* SESelectionGrabber.m in Sources */,
@@ -480,13 +501,16 @@
 				14EDE2FD17F55A7C00ABF2C6 /* SETextInput.m in Sources */,
 				14EDE2FA17F55A7C00ABF2C6 /* SETextAttachment.m in Sources */,
 				14EDE2FB17F55A7C00ABF2C6 /* SETextEditingCaret.m in Sources */,
+				4A68754822F1ADA9003B5528 /* SEBaseModel.m in Sources */,
 				1469DB7717F358A700ADDA7E /* SEAppDelegate.m in Sources */,
 				1469DB8317F358A700ADDA7E /* SEViewController.m in Sources */,
+				4A68754522F1AA92003B5528 /* SENormalTextCell.m in Sources */,
 				14EDE30217F55A7C00ABF2C6 /* SETextSelectionView.m in Sources */,
 				14EDE2F717F55A7C00ABF2C6 /* SELineLayout.m in Sources */,
 				1469DC7917F3770F00ADDA7E /* SEStampInputView.m in Sources */,
 				14EDE2FE17F55A7C00ABF2C6 /* SETextLayout.m in Sources */,
 				14EDE30117F55A7C00ABF2C6 /* SETextSelection.m in Sources */,
+				4A68754222F1A785003B5528 /* SEBaseTextViewController.m in Sources */,
 				14EDE2F517F55A7C00ABF2C6 /* SECompatibility.m in Sources */,
 				1469DC7C17F3773E00ADDA7E /* SEInputAccessoryView.m in Sources */,
 				14EDE2F817F55A7C00ABF2C6 /* SELinkText.m in Sources */,
