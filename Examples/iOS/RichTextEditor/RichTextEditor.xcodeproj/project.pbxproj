@@ -346,7 +346,7 @@
 		1469DB6C17F358A700ADDA7E /* RichTextEditor */ = {
 			isa = PBXGroup;
 			children = (
-				4AA9C4B222F3FC3D00121FB9 /* Classes */,
+				4AA9C4BA22F3FD8500121FB9 /* Classes */,
 				1469DB7517F358A700ADDA7E /* SEAppDelegate.h */,
 				1469DB7617F358A700ADDA7E /* SEAppDelegate.m */,
 				1469DB8117F358A700ADDA7E /* SEViewController.h */,
@@ -382,13 +382,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4AA9C4B222F3FC3D00121FB9 /* Classes */ = {
+		4AA9C4B422F3FD2500121FB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
-				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
-				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
-				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
 				4A68754622F1ADA9003B5528 /* SEBaseModel.h */,
 				4A68754722F1ADA9003B5528 /* SEBaseModel.m */,
 				4A68754C22F1AEEC003B5528 /* SEBoldRange.h */,
@@ -396,12 +392,56 @@
 				4AA9C4A822F3E85D00121FB9 /* SETextCommonFile.h */,
 				4AA9C4A922F3F22300121FB9 /* SETitleModel.h */,
 				4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4AA9C4B622F3FD4400121FB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4AA9C4B722F3FD5100121FB9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4AA9C4B722F3FD5100121FB9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
+				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4AA9C4B822F3FD5E00121FB9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
+				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4AA9C4B922F3FD6F00121FB9 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
 				4AA9C4AC22F3F26800121FB9 /* SETextConfig.h */,
 				4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */,
 				4AA9C4AF22F3F7D200121FB9 /* SEImgaeConfig.h */,
 				4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */,
 			);
-			name = Classes;
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		4AA9C4BA22F3FD8500121FB9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4AA9C4B922F3FD6F00121FB9 /* Configs */,
+				4AA9C4B822F3FD5E00121FB9 /* ViewControllers */,
+				4AA9C4B622F3FD4400121FB9 /* Views */,
+				4AA9C4B422F3FD2500121FB9 /* Models */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
