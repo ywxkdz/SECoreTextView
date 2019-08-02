@@ -21,7 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)   NSString *text; //文本
 @property(nonatomic,strong) NSMutableArray <SEBoldRange*>*blodRangs; //加粗区间
 
+
 @property(nonatomic,strong) SETextConfig *textConfig;  //格式定义
+@property(nonatomic,copy)   NSString *cellClass;  //格式定义
 
 @end
 

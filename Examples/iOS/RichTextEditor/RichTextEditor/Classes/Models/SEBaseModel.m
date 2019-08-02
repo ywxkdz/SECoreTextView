@@ -14,5 +14,26 @@
     return [SETextConfig configForType:self.type];
 }
 
+-(void)setType:(SERichTextType)type{
+    
+    _type = type;
+    
+    switch (type) {
+        case SERichTextTypeTitle:
+        case SERichTextTypeNormal:
+            self.cellClass = @"SENormalTextCell";
+            break;
+            
+        case SERichTextTypeCheck:
+        case SERichTextTypeQuote:
+        case SERichTextTypeList:
+            
+            self.cellClass = @"";
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

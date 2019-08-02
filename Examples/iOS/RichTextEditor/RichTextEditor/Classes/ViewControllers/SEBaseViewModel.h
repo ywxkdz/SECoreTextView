@@ -1,16 +1,16 @@
 //
-//  SENormalTextCell.h
+//  SEBaseViewModel.h
 //  RichTextEditor
 //
-//  Created by Liumao on 2019/7/31.
+//  Created by Liumao on 2019/8/2.
 //  Copyright © 2019 kishikawa katsumi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SENormalTextCell : UITableViewCell
+@interface SEBaseViewModel : NSObject
 
 
 @end

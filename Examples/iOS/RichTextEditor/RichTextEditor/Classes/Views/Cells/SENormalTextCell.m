@@ -7,6 +7,14 @@
 //
 
 #import "SENormalTextCell.h"
+#import "SETextCommonFile.h"
+#import "SETextView.h"
+
+@interface SENormalTextCell()<SECellUpDataDelegate>
+
+@property(nonatomic,strong)  SETextView *richTextView;
+
+@end
 
 @implementation SENormalTextCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -16,10 +24,30 @@
     }
     return self;
 }
-
 -(void) setUpUI{
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor redColor];
+    
+    [self.contentView addSubview:self.richTextView];
+    
+    
+    
+    
+    
+    
+}
 
+-(SETextView *)richTextView{
+    if (!_richTextView) {
+        _richTextView = [[SETextView alloc]initWithFrame:CGRectZero];
+    }
+    return _richTextView;
+}
+#pragma mark - SECellUpDataDelegate
+-(void)updateModel:(SEBaseModel *)model{
+    
+    
 }
 
 @end

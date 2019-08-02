@@ -7,10 +7,13 @@
 //
 
 #import "SEBaseTextViewController.h"
+#import "SEDataPrivider.h"
+#import "SECellHeaders.h"
 
 @interface SEBaseTextViewController ()
 
 @property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong)  id<UITableViewDelegate,UITableViewDataSource> dataPrivider;
 
 @end
 
@@ -19,41 +22,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpUI];
+    [self.tableView reloadData];
+    
 }
 
+#pragma mark - UI Set
+-(void) setUpUI{
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.tableView];
+
+}
+
+
+
 #pragma mark - Lazy Load
+-(id<UITableViewDelegate,UITableViewDataSource>)dataPrivider{
+    
+    if (!_dataPrivider) {
+        _dataPrivider = [SEDataPrivider new];
+    }
+    return _dataPrivider;
+}
+
 -(UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.delegate   = self;
-        _tableView.dataSource = self;
+        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds
+                                                 style:UITableViewStylePlain];
+        _tableView.dataSource = self.dataPrivider;
+        _tableView.delegate   = self.dataPrivider;
+        
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerClass:[SENormalTextCell class]
+           forCellReuseIdentifier:@"SENormalTextCell"];
+        
+        
     }
     return _tableView;
 }
-@end
-
-@interface SEBaseTextViewController(TableView)<UITableViewDelegate,UITableViewDataSource>
 
 @end
-
-@implementation SEBaseTextViewController (TableView)
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 10;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return nil;
-}
-
-
-@end
-
-
-
 

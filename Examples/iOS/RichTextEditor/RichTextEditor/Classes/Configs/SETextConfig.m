@@ -37,13 +37,13 @@
         case SERichTextTypeNormal:
             return [self textConfig];
             
-        case SERichTextTypeCheckQuote:
-        case SERichTextTypeCheckList:
-        case SERichTextTypeCheckCheck:
+        case SERichTextTypeQuote:
+        case SERichTextTypeCheck:
+        case SERichTextTypeList:
             return [self richConfig];
             
-        case SERichTextTypeCheckImage:
-            NSAssert(type == SERichTextTypeCheckImage, @"");
+        case SERichTextTypeImage:
+            NSAssert(type == SERichTextTypeImage, @"");
         default:
             break;
     }

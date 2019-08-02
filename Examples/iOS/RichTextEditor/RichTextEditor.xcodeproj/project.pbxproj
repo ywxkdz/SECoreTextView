@@ -55,9 +55,6 @@
 		1469DB7117F358A700ADDA7E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1469DB6F17F358A700ADDA7E /* InfoPlist.strings */; };
 		1469DB7317F358A700ADDA7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1469DB7217F358A700ADDA7E /* main.m */; };
 		1469DB7717F358A700ADDA7E /* SEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1469DB7617F358A700ADDA7E /* SEAppDelegate.m */; };
-		1469DB7917F358A700ADDA7E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469DB7817F358A700ADDA7E /* Default.png */; };
-		1469DB7B17F358A700ADDA7E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469DB7A17F358A700ADDA7E /* Default@2x.png */; };
-		1469DB7D17F358A700ADDA7E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469DB7C17F358A700ADDA7E /* Default-568h@2x.png */; };
 		1469DB8017F358A700ADDA7E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1469DB7E17F358A700ADDA7E /* MainStoryboard.storyboard */; };
 		1469DB8317F358A700ADDA7E /* SEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1469DB8217F358A700ADDA7E /* SEViewController.m */; };
 		1469DB8E17F3591900ADDA7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1469DB8D17F3591900ADDA7E /* QuartzCore.framework */; };
@@ -89,6 +86,12 @@
 		4AA9C4AB22F3F22300121FB9 /* SETitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */; };
 		4AA9C4AE22F3F26800121FB9 /* SETextConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */; };
 		4AA9C4B122F3F7D200121FB9 /* SEImgaeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */; };
+		4AA9C4BE22F3FE5E00121FB9 /* SEDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4BD22F3FE5E00121FB9 /* SEDataParser.m */; };
+		4AA9C4C122F3FE9A00121FB9 /* SEDataPrivider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4C022F3FE9A00121FB9 /* SEDataPrivider.m */; };
+		4AA9C4C422F3FECF00121FB9 /* SEBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4C322F3FECF00121FB9 /* SEBaseViewModel.m */; };
+		4AA9C4C722F404F200121FB9 /* SEDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4C622F404F200121FB9 /* SEDataSource.m */; };
+		4AC3BF4322F409A500DCCA50 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3BF4222F409A500DCCA50 /* Launch Screen.storyboard */; };
+		4AC3BF4A22F40DA600DCCA50 /* SECellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3BF4922F40DA600DCCA50 /* SECellFactory.m */; };
 		D94F7A671AB685D200D96592 /* SEViewCaptureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -146,9 +149,6 @@
 		1469DB7417F358A700ADDA7E /* RichTextEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RichTextEditor-Prefix.pch"; sourceTree = "<group>"; };
 		1469DB7517F358A700ADDA7E /* SEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEAppDelegate.h; sourceTree = "<group>"; };
 		1469DB7617F358A700ADDA7E /* SEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEAppDelegate.m; sourceTree = "<group>"; };
-		1469DB7817F358A700ADDA7E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		1469DB7A17F358A700ADDA7E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		1469DB7C17F358A700ADDA7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1469DB8117F358A700ADDA7E /* SEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEViewController.h; sourceTree = "<group>"; };
 		1469DB8217F358A700ADDA7E /* SEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEViewController.m; sourceTree = "<group>"; };
 		1469DB8D17F3591900ADDA7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -193,19 +193,31 @@
 		4A68753F22F187F2003B5528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4A68754022F1A785003B5528 /* SEBaseTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBaseTextViewController.h; sourceTree = "<group>"; };
 		4A68754122F1A785003B5528 /* SEBaseTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseTextViewController.m; sourceTree = "<group>"; };
-		4A68754322F1AA92003B5528 /* SENormalTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SENormalTextCell.h; sourceTree = "<group>"; };
-		4A68754422F1AA92003B5528 /* SENormalTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SENormalTextCell.m; sourceTree = "<group>"; };
+		4A68754322F1AA92003B5528 /* SENormalTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SENormalTextCell.h; sourceTree = "<group>"; wrapsLines = 1; };
+		4A68754422F1AA92003B5528 /* SENormalTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SENormalTextCell.m; sourceTree = "<group>"; wrapsLines = 1; };
 		4A68754622F1ADA9003B5528 /* SEBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBaseModel.h; sourceTree = "<group>"; };
-		4A68754722F1ADA9003B5528 /* SEBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseModel.m; sourceTree = "<group>"; };
+		4A68754722F1ADA9003B5528 /* SEBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseModel.m; sourceTree = "<group>"; wrapsLines = 1; };
 		4A68754C22F1AEEC003B5528 /* SEBoldRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBoldRange.h; sourceTree = "<group>"; };
-		4A68754D22F1AEEC003B5528 /* SEBoldRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBoldRange.m; sourceTree = "<group>"; };
+		4A68754D22F1AEEC003B5528 /* SEBoldRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBoldRange.m; sourceTree = "<group>"; wrapsLines = 1; };
 		4AA9C4A822F3E85D00121FB9 /* SETextCommonFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETextCommonFile.h; sourceTree = "<group>"; };
 		4AA9C4A922F3F22300121FB9 /* SETitleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETitleModel.h; sourceTree = "<group>"; };
-		4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SETitleModel.m; sourceTree = "<group>"; };
+		4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SETitleModel.m; sourceTree = "<group>"; wrapsLines = 1; };
 		4AA9C4AC22F3F26800121FB9 /* SETextConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETextConfig.h; sourceTree = "<group>"; };
 		4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SETextConfig.m; sourceTree = "<group>"; };
 		4AA9C4AF22F3F7D200121FB9 /* SEImgaeConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEImgaeConfig.h; sourceTree = "<group>"; };
 		4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEImgaeConfig.m; sourceTree = "<group>"; };
+		4AA9C4BC22F3FE5E00121FB9 /* SEDataParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEDataParser.h; sourceTree = "<group>"; };
+		4AA9C4BD22F3FE5E00121FB9 /* SEDataParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEDataParser.m; sourceTree = "<group>"; };
+		4AA9C4BF22F3FE9A00121FB9 /* SEDataPrivider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEDataPrivider.h; sourceTree = "<group>"; };
+		4AA9C4C022F3FE9A00121FB9 /* SEDataPrivider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEDataPrivider.m; sourceTree = "<group>"; wrapsLines = 1; };
+		4AA9C4C222F3FECF00121FB9 /* SEBaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBaseViewModel.h; sourceTree = "<group>"; };
+		4AA9C4C322F3FECF00121FB9 /* SEBaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseViewModel.m; sourceTree = "<group>"; wrapsLines = 1; };
+		4AA9C4C522F404F200121FB9 /* SEDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEDataSource.h; sourceTree = "<group>"; };
+		4AA9C4C622F404F200121FB9 /* SEDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEDataSource.m; sourceTree = "<group>"; wrapsLines = 1; };
+		4AC3BF4222F409A500DCCA50 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4AC3BF4722F40A5800DCCA50 /* SECellHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SECellHeaders.h; sourceTree = "<group>"; };
+		4AC3BF4822F40DA600DCCA50 /* SECellFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SECellFactory.h; sourceTree = "<group>"; };
+		4AC3BF4922F40DA600DCCA50 /* SECellFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SECellFactory.m; sourceTree = "<group>"; wrapsLines = 1; };
 		D94F7A651AB685D200D96592 /* SEViewCaptureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEViewCaptureHelper.h; path = ../../../../Lib/SEViewCaptureHelper.h; sourceTree = "<group>"; };
 		D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEViewCaptureHelper.m; path = ../../../../Lib/SEViewCaptureHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -370,13 +382,11 @@
 		1469DB6D17F358A700ADDA7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4AC3BF4222F409A500DCCA50 /* Launch Screen.storyboard */,
 				1469DB6E17F358A700ADDA7E /* RichTextEditor-Info.plist */,
 				1469DB6F17F358A700ADDA7E /* InfoPlist.strings */,
 				1469DB7217F358A700ADDA7E /* main.m */,
 				1469DB7417F358A700ADDA7E /* RichTextEditor-Prefix.pch */,
-				1469DB7817F358A700ADDA7E /* Default.png */,
-				1469DB7A17F358A700ADDA7E /* Default@2x.png */,
-				1469DB7C17F358A700ADDA7E /* Default-568h@2x.png */,
 				14178A9117F3AEC200C70E04 /* InitialText.txt */,
 			);
 			name = "Supporting Files";
@@ -409,6 +419,7 @@
 			children = (
 				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
 				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
+				4AC3BF4722F40A5800DCCA50 /* SECellHeaders.h */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -418,6 +429,8 @@
 			children = (
 				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
 				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
+				4AA9C4C222F3FECF00121FB9 /* SEBaseViewModel.h */,
+				4AA9C4C322F3FECF00121FB9 /* SEBaseViewModel.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -436,12 +449,28 @@
 		4AA9C4BA22F3FD8500121FB9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4AA9C4BB22F3FE3C00121FB9 /* Services */,
 				4AA9C4B922F3FD6F00121FB9 /* Configs */,
 				4AA9C4B822F3FD5E00121FB9 /* ViewControllers */,
 				4AA9C4B622F3FD4400121FB9 /* Views */,
 				4AA9C4B422F3FD2500121FB9 /* Models */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		4AA9C4BB22F3FE3C00121FB9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4AA9C4BC22F3FE5E00121FB9 /* SEDataParser.h */,
+				4AA9C4BD22F3FE5E00121FB9 /* SEDataParser.m */,
+				4AA9C4BF22F3FE9A00121FB9 /* SEDataPrivider.h */,
+				4AA9C4C022F3FE9A00121FB9 /* SEDataPrivider.m */,
+				4AA9C4C522F404F200121FB9 /* SEDataSource.h */,
+				4AA9C4C622F404F200121FB9 /* SEDataSource.m */,
+				4AC3BF4822F40DA600DCCA50 /* SECellFactory.h */,
+				4AC3BF4922F40DA600DCCA50 /* SECellFactory.m */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1423742117F37CEC006D35BC /* MJs5.png in Resources */,
+				4AC3BF4322F409A500DCCA50 /* Launch Screen.storyboard in Resources */,
 				14EDE30517F55A8F00ABF2C6 /* SECoreTextView.bundle in Resources */,
 				1469DB7117F358A700ADDA7E /* InfoPlist.strings in Resources */,
 				1423740917F37CCB006D35BC /* MJs8@2x.png in Resources */,
@@ -506,14 +536,12 @@
 				1423742317F37CEC006D35BC /* MJs7.png in Resources */,
 				1423740417F37CCB006D35BC /* MJs7@2x.png in Resources */,
 				1423740C17F37CCB006D35BC /* MJs6@2x.png in Resources */,
-				1469DB7917F358A700ADDA7E /* Default.png in Resources */,
 				14178A9517F4304B00C70E04 /* text.png in Resources */,
 				1423740317F37CCB006D35BC /* MJs2@2x.png in Resources */,
 				1423742A17F37D23006D35BC /* zoomin.png in Resources */,
 				1423742017F37CEC006D35BC /* MJs4.png in Resources */,
 				1423742517F37CEC006D35BC /* MJs9.png in Resources */,
 				1423741A17F37CEC006D35BC /* MJd1.png in Resources */,
-				1469DB7B17F358A700ADDA7E /* Default@2x.png in Resources */,
 				1423740A17F37CCB006D35BC /* MJs4@2x.png in Resources */,
 				1423740817F37CCB006D35BC /* MJd2@2x.png in Resources */,
 				1423741D17F37CEC006D35BC /* MJs1bird.png in Resources */,
@@ -521,7 +549,6 @@
 				1423740217F37CCB006D35BC /* MJs9@2x.png in Resources */,
 				1423746617F386EF006D35BC /* photos.png in Resources */,
 				1423740617F37CCB006D35BC /* MJd3@2x.png in Resources */,
-				1469DB7D17F358A700ADDA7E /* Default-568h@2x.png in Resources */,
 				1423746B17F38703006D35BC /* rubberstamp@2x.png in Resources */,
 				14178A8B17F3A83500C70E04 /* italic.png in Resources */,
 				14178A8717F3A82A00C70E04 /* bold.png in Resources */,
@@ -557,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AA9C4AB22F3F22300121FB9 /* SETitleModel.m in Sources */,
+				4AA9C4C122F3FE9A00121FB9 /* SEDataPrivider.m in Sources */,
 				14EDE2FC17F55A7C00ABF2C6 /* SETextGeometry.m in Sources */,
 				1469DB7317F358A700ADDA7E /* main.m in Sources */,
 				4A68754E22F1AEEC003B5528 /* SEBoldRange.m in Sources */,
@@ -565,7 +593,9 @@
 				14EDE2FF17F55A7C00ABF2C6 /* SETextMagnifierCaret.m in Sources */,
 				14EDE2F917F55A7C00ABF2C6 /* SESelectionGrabber.m in Sources */,
 				14178A8417F39FD300C70E04 /* SEPhotoView.m in Sources */,
+				4AA9C4C722F404F200121FB9 /* SEDataSource.m in Sources */,
 				14EDE2FD17F55A7C00ABF2C6 /* SETextInput.m in Sources */,
+				4AA9C4C422F3FECF00121FB9 /* SEBaseViewModel.m in Sources */,
 				14EDE2FA17F55A7C00ABF2C6 /* SETextAttachment.m in Sources */,
 				14EDE2FB17F55A7C00ABF2C6 /* SETextEditingCaret.m in Sources */,
 				4A68754822F1ADA9003B5528 /* SEBaseModel.m in Sources */,
@@ -578,8 +608,10 @@
 				4AA9C4B122F3F7D200121FB9 /* SEImgaeConfig.m in Sources */,
 				14EDE2FE17F55A7C00ABF2C6 /* SETextLayout.m in Sources */,
 				14EDE30117F55A7C00ABF2C6 /* SETextSelection.m in Sources */,
+				4AA9C4BE22F3FE5E00121FB9 /* SEDataParser.m in Sources */,
 				4A68754222F1A785003B5528 /* SEBaseTextViewController.m in Sources */,
 				14EDE2F517F55A7C00ABF2C6 /* SECompatibility.m in Sources */,
+				4AC3BF4A22F40DA600DCCA50 /* SECellFactory.m in Sources */,
 				1469DC7C17F3773E00ADDA7E /* SEInputAccessoryView.m in Sources */,
 				14EDE2F817F55A7C00ABF2C6 /* SELinkText.m in Sources */,
 				D94F7A671AB685D200D96592 /* SEViewCaptureHelper.m in Sources */,
@@ -654,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -696,7 +728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

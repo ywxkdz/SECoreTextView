@@ -15,14 +15,18 @@ typedef enum : NSUInteger {
     SERichTextTypeTitle,
     SERichTextTypeNormal,
     
-    SERichTextTypeCheckList,
-    SERichTextTypeCheckQuote,
-    SERichTextTypeCheckCheck,
+    SERichTextTypeList,
+    SERichTextTypeQuote,
+    SERichTextTypeCheck,
     
-    SERichTextTypeCheckImage,
-    SERichTextTypeCheckFile,
+    SERichTextTypeImage,
+    SERichTextTypeFile,
 } SERichTextType;
 
+@class SEBaseModel;
+@protocol SECellUpDataDelegate <NSObject>
+-(void) updateModel:(SEBaseModel*)model;
+@end
 
 
 #endif /* SETextCommonFile_h */

@@ -7,11 +7,17 @@
 //
 
 #import "SEAppDelegate.h"
+#import "SEBaseTextViewController.h"
 
 @implementation SEAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[SEBaseTextViewController new]];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
