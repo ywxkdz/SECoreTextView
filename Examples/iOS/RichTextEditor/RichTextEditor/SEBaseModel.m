@@ -10,4 +10,9 @@
 
 @implementation SEBaseModel
 
+-(SETextConfig *)textConfig{
+    return [SETextConfig configForType:self.type];
+}
+
+
 @end

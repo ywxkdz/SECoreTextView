@@ -86,6 +86,9 @@
 		4A68754522F1AA92003B5528 /* SENormalTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754422F1AA92003B5528 /* SENormalTextCell.m */; };
 		4A68754822F1ADA9003B5528 /* SEBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754722F1ADA9003B5528 /* SEBaseModel.m */; };
 		4A68754E22F1AEEC003B5528 /* SEBoldRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68754D22F1AEEC003B5528 /* SEBoldRange.m */; };
+		4AA9C4AB22F3F22300121FB9 /* SETitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */; };
+		4AA9C4AE22F3F26800121FB9 /* SETextConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */; };
+		4AA9C4B122F3F7D200121FB9 /* SEImgaeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */; };
 		D94F7A671AB685D200D96592 /* SEViewCaptureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +199,13 @@
 		4A68754722F1ADA9003B5528 /* SEBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBaseModel.m; sourceTree = "<group>"; };
 		4A68754C22F1AEEC003B5528 /* SEBoldRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBoldRange.h; sourceTree = "<group>"; };
 		4A68754D22F1AEEC003B5528 /* SEBoldRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBoldRange.m; sourceTree = "<group>"; };
+		4AA9C4A822F3E85D00121FB9 /* SETextCommonFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETextCommonFile.h; sourceTree = "<group>"; };
+		4AA9C4A922F3F22300121FB9 /* SETitleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETitleModel.h; sourceTree = "<group>"; };
+		4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SETitleModel.m; sourceTree = "<group>"; };
+		4AA9C4AC22F3F26800121FB9 /* SETextConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SETextConfig.h; sourceTree = "<group>"; };
+		4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SETextConfig.m; sourceTree = "<group>"; };
+		4AA9C4AF22F3F7D200121FB9 /* SEImgaeConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEImgaeConfig.h; sourceTree = "<group>"; };
+		4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEImgaeConfig.m; sourceTree = "<group>"; };
 		D94F7A651AB685D200D96592 /* SEViewCaptureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEViewCaptureHelper.h; path = ../../../../Lib/SEViewCaptureHelper.h; sourceTree = "<group>"; };
 		D94F7A661AB685D200D96592 /* SEViewCaptureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEViewCaptureHelper.m; path = ../../../../Lib/SEViewCaptureHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -336,6 +346,7 @@
 		1469DB6C17F358A700ADDA7E /* RichTextEditor */ = {
 			isa = PBXGroup;
 			children = (
+				4AA9C4B222F3FC3D00121FB9 /* Classes */,
 				1469DB7517F358A700ADDA7E /* SEAppDelegate.h */,
 				1469DB7617F358A700ADDA7E /* SEAppDelegate.m */,
 				1469DB8117F358A700ADDA7E /* SEViewController.h */,
@@ -352,14 +363,6 @@
 				1423745F17F37E13006D35BC /* Lib */,
 				1423742E17F37DC9006D35BC /* Images */,
 				1469DB6D17F358A700ADDA7E /* Supporting Files */,
-				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
-				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
-				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
-				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
-				4A68754622F1ADA9003B5528 /* SEBaseModel.h */,
-				4A68754722F1ADA9003B5528 /* SEBaseModel.m */,
-				4A68754C22F1AEEC003B5528 /* SEBoldRange.h */,
-				4A68754D22F1AEEC003B5528 /* SEBoldRange.m */,
 			);
 			path = RichTextEditor;
 			sourceTree = "<group>";
@@ -377,6 +380,28 @@
 				14178A9117F3AEC200C70E04 /* InitialText.txt */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AA9C4B222F3FC3D00121FB9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A68754022F1A785003B5528 /* SEBaseTextViewController.h */,
+				4A68754122F1A785003B5528 /* SEBaseTextViewController.m */,
+				4A68754322F1AA92003B5528 /* SENormalTextCell.h */,
+				4A68754422F1AA92003B5528 /* SENormalTextCell.m */,
+				4A68754622F1ADA9003B5528 /* SEBaseModel.h */,
+				4A68754722F1ADA9003B5528 /* SEBaseModel.m */,
+				4A68754C22F1AEEC003B5528 /* SEBoldRange.h */,
+				4A68754D22F1AEEC003B5528 /* SEBoldRange.m */,
+				4AA9C4A822F3E85D00121FB9 /* SETextCommonFile.h */,
+				4AA9C4A922F3F22300121FB9 /* SETitleModel.h */,
+				4AA9C4AA22F3F22300121FB9 /* SETitleModel.m */,
+				4AA9C4AC22F3F26800121FB9 /* SETextConfig.h */,
+				4AA9C4AD22F3F26800121FB9 /* SETextConfig.m */,
+				4AA9C4AF22F3F7D200121FB9 /* SEImgaeConfig.h */,
+				4AA9C4B022F3F7D200121FB9 /* SEImgaeConfig.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,9 +516,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AA9C4AB22F3F22300121FB9 /* SETitleModel.m in Sources */,
 				14EDE2FC17F55A7C00ABF2C6 /* SETextGeometry.m in Sources */,
 				1469DB7317F358A700ADDA7E /* main.m in Sources */,
 				4A68754E22F1AEEC003B5528 /* SEBoldRange.m in Sources */,
+				4AA9C4AE22F3F26800121FB9 /* SETextConfig.m in Sources */,
 				14EDE2F617F55A7C00ABF2C6 /* SEConstants.m in Sources */,
 				14EDE2FF17F55A7C00ABF2C6 /* SETextMagnifierCaret.m in Sources */,
 				14EDE2F917F55A7C00ABF2C6 /* SESelectionGrabber.m in Sources */,
@@ -508,6 +535,7 @@
 				14EDE30217F55A7C00ABF2C6 /* SETextSelectionView.m in Sources */,
 				14EDE2F717F55A7C00ABF2C6 /* SELineLayout.m in Sources */,
 				1469DC7917F3770F00ADDA7E /* SEStampInputView.m in Sources */,
+				4AA9C4B122F3F7D200121FB9 /* SEImgaeConfig.m in Sources */,
 				14EDE2FE17F55A7C00ABF2C6 /* SETextLayout.m in Sources */,
 				14EDE30117F55A7C00ABF2C6 /* SETextSelection.m in Sources */,
 				4A68754222F1A785003B5528 /* SEBaseTextViewController.m in Sources */,

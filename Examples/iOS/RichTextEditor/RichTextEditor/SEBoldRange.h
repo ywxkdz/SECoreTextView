@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SEBoldRange : NSObject
 
-
-
-
+@property(nonatomic,assign) NSInteger location;
+@property(nonatomic,assign) NSInteger length;
 
 @end
 
